@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EB Lawyers – El derecho que entiende tu industria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&family=Saira+Condensed:wght@700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* ===== TOKENS ===== */
+    :root {
+      --purple:   #37286b;
+      --purple-d: #251d50;
+      --purple-l: #4a3990;
+      --magenta:  #ff00bf;
+      --magenta-d:#d400a0;
+      --cream:    #f1ece1;
+      --cream-d:  #e6dfd1;
+      --dark:     #1a1426;
+      --text:     #1a1426;
+    }
+
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Saira', system-ui, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== GRAIN TEXTURE ===== */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 9998;
+      pointer-events: none;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* ===== UTILITIES ===== */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+    .section { padding: 96px 28px; }
+
+    /* Section title style from brief */
+    .section-title {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      text-transform: uppercase;
+      line-height: 0.92;
+      color: var(--purple);
+      letter-spacing: -0.01em;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title .highlight { color: var(--magenta); }
+    .title-underline {
+      display: block;
+      width: 70%; height: 8px;
+      background: var(--magenta);
+      margin-top: 6px;
+      transform: skewX(-8deg);
+    }
+    .title-underline-2 {
+      display: block;
+      width: 50%; height: 6px;
+      background: var(--magenta);
+      margin-top: 4px;
+      transform: skewX(-8deg);
+      opacity: 0.6;
+    }
+
+    /* Magenta pill label */
+    .pill {
+      display: inline-block;
+      background: var(--magenta);
+      color: #fff;
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 6px 20px;
+      border-radius: 50px;
+    }
+    .pill-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--magenta);
+      border: 2px solid var(--magenta);
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 5px 18px;
+      border-radius: 50px;
+    }
+    .pill-cream {
+      display: inline-block;
+      background: var(--cream);
+      color: var(--purple);
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 6px 20px;
+      border-radius: 50px;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(241,236,225,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(55,40,107,0.1);
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled { box-shadow: 0 2px 20px rgba(55,40,107,0.12); }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto; padding: 0 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--purple);
+      display: flex; align-items: center; gap: 8px;
+      cursor: pointer;
+    }
+    .nav-logo-eb {
+      font-size: 2rem; line-height: 1;
+      color: var(--purple);
+    }
+    .nav-logo-lawyers {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--purple);
+      opacity: 0.7;
+      display: block;
+      margin-top: -2px;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 4px; list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Saira', sans-serif;
+      font-size: 0.82rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--purple); opacity: 0.7;
+      padding: 7px 14px; border-radius: 6px;
+      transition: opacity 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { opacity: 1; background: rgba(55,40,107,0.06); }
+    .nav-cta {
+      background: var(--magenta);
+      color: #fff !important; opacity: 1 !important;
+      padding: 10px 22px !important; border-radius: 8px !important;
+      box-shadow: 0 4px 20px rgba(255,0,191,0.35);
+      transition: box-shadow 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover {
+      box-shadow: 0 8px 28px rgba(255,0,191,0.50) !important;
+      transform: translateY(-1px);
+    }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--purple); border-radius: 2px; }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      background: var(--purple);
+      display: flex; align-items: center;
+      padding: 110px 28px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(255,0,191,0.12) 0%, transparent 60%),
+                  radial-gradient(ellipse at 10% 80%, rgba(255,0,191,0.07) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    /* Diagonal accent lines */
+    .hero-lines {
+      position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
+    }
+    .hero-lines::before {
+      content: '';
+      position: absolute; top: -50%; right: -10%; width: 1px; height: 200%;
+      background: linear-gradient(to bottom, transparent, rgba(255,0,191,0.25), transparent);
+      transform: rotate(-15deg);
+    }
+    .hero-lines::after {
+      content: '';
+      position: absolute; top: -50%; right: 6%; width: 1px; height: 200%;
+      background: linear-gradient(to bottom, transparent, rgba(255,0,191,0.12), transparent);
+      transform: rotate(-15deg);
+    }
+    .hero-inner {
+      max-width: 1160px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+      position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      font-family: 'Saira', sans-serif;
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--magenta); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 32px; height: 2px; background: var(--magenta);
+    }
+    .hero h1 {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 6vw, 6rem);
+      text-transform: uppercase;
+      line-height: 0.9;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+    }
+    .hero h1 .magenta { color: var(--magenta); }
+    .hero p {
+      font-size: 1.05rem; font-weight: 400;
+      color: rgba(241,236,225,0.72); line-height: 1.65;
+      margin-bottom: 40px; max-width: 480px;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-magenta {
+      background: var(--magenta); color: #fff;
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900; font-size: 1rem;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 16px 36px; border-radius: 8px; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 10px;
+      box-shadow: 0 8px 32px rgba(255,0,191,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-magenta:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(255,0,191,0.55); }
+    .btn-outline-cream {
+      background: transparent; color: var(--cream);
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 14px 32px; border-radius: 8px;
+      border: 2px solid rgba(241,236,225,0.35); cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline-cream:hover { border-color: rgba(241,236,225,0.7); background: rgba(241,236,225,0.06); }
+    /* Hero right: visual card */
+    .hero-card {
+      background: rgba(241,236,225,0.06);
+      border: 1px solid rgba(241,236,225,0.12);
+      border-radius: 20px; padding: 36px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-card-header {
+      display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;
+    }
+    .hero-card-header h3 {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900; font-size: 1.1rem; text-transform: uppercase;
+      color: var(--cream); letter-spacing: 0.04em;
+    }
+    .hero-dot-live {
+      display: flex; align-items: center; gap: 7px;
+      color: var(--magenta); font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .dot-pulse {
+      width: 8px; height: 8px; background: var(--magenta); border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+    .hero-areas {
+      display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;
+    }
+    .hero-area-item {
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px; padding: 12px 16px;
+    }
+    .hero-area-name {
+      font-family: 'Saira', sans-serif; font-weight: 600; font-size: 0.88rem;
+      color: rgba(241,236,225,0.85);
+    }
+    .hero-area-tag {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--magenta); opacity: 0.85;
+    }
+    .hero-card-bottom {
+      background: var(--magenta); border-radius: 12px; padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .hero-card-bottom p {
+      font-family: 'Saira Condensed', sans-serif; font-weight: 900;
+      font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em;
+      color: #fff; margin: 0 !important;
+    }
+    .hero-card-bottom span { font-size: 1.3rem; }
+
+    /* ===== MARQUEE ===== */
+    .marquee-strip {
+      background: var(--purple);
+      padding: 18px 0; overflow: hidden;
+      border-top: 1px solid rgba(255,0,191,0.2);
+      border-bottom: 1px solid rgba(255,0,191,0.2);
+    }
+    .marquee-track {
+      display: flex; gap: 0;
+      animation: marquee 22s linear infinite;
+      width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+    .marquee-item {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900; font-size: 1.1rem;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      white-space: nowrap; padding: 0 32px;
+    }
+    .marquee-item.purple { color: var(--cream); }
+    .marquee-item.magenta { color: var(--magenta); }
+    .marquee-dot { color: var(--magenta); padding: 0 8px; }
+
+    /* ===== QUÉ SOMOS ===== */
+    .quienes-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+      max-width: 1160px; margin: 0 auto;
+    }
+    .quienes-text p {
+      font-size: 1.08rem; line-height: 1.72; color: rgba(26,20,38,0.7);
+      margin-bottom: 16px;
+    }
+    .quienes-text strong { color: var(--purple); font-weight: 700; }
+    .quienes-text .magenta-text { color: var(--magenta); font-weight: 700; }
+    .quienes-claims {
+      display: flex; flex-direction: column; gap: 10px; margin-top: 24px;
+    }
+    .claim-row {
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'Saira', sans-serif; font-weight: 600; font-size: 0.95rem;
+    }
+    .claim-row .less { color: rgba(26,20,38,0.45); }
+    .claim-row .more { color: var(--purple); font-weight: 800; }
+    .claim-sep { color: var(--magenta); font-size: 1.2rem; }
+    .quienes-visual {
+      background: var(--purple); border-radius: 20px; padding: 48px 40px;
+      position: relative; overflow: hidden;
+    }
+    .quienes-visual::before {
+      content: '';
+      position: absolute; bottom: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,0,191,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .quienes-visual h3 {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900; font-size: 2.4rem; text-transform: uppercase;
+      color: var(--cream); line-height: 0.95; margin-bottom: 24px;
+      letter-spacing: -0.01em; position: relative; z-index: 1;
+    }
+    .quienes-visual h3 span { color: var(--magenta); }
+    .quienes-purpose-items {
+      display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1;
+    }
+    .purpose-item {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.07); border-radius: 10px; padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .purpose-bullet {
+      width: 8px; height: 8px; background: var(--magenta);
+      border-radius: 50%; flex-shrink: 0;
+    }
+    .purpose-item span {
+      font-size: 0.9rem; font-weight: 500;
+      color: rgba(241,236,225,0.85);
+    }
+
+    /* ===== CON QUIÉN TRABAJAMOS ===== */
+    .conquien-section {
+      background: var(--cream-d);
+      padding: 80px 28px;
+      overflow: hidden;
+    }
+    .conquien-title-wrap { max-width: 1160px; margin: 0 auto 40px; }
+    .clients-scroll {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      max-width: 1160px; margin: 0 auto;
+    }
+    .client-tag {
+      background: #fff; color: var(--purple);
+      font-family: 'Saira', sans-serif; font-weight: 700; font-size: 0.88rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 10px 22px; border-radius: 50px;
+      border: 1.5px solid rgba(55,40,107,0.15);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .client-tag:hover { background: var(--purple); color: var(--cream); border-color: var(--purple); }
+    .client-tag.featured {
+      background: var(--purple); color: var(--cream); border-color: var(--purple);
+    }
+
+    /* ===== SERVICIOS ===== */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      max-width: 1160px; margin: 48px auto 0;
+    }
+    .service-card {
+      background: var(--purple); border-radius: 16px; padding: 36px 32px;
+      position: relative; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(55,40,107,0.3); }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: -30px; right: -30px;
+      width: 120px; height: 120px;
+      background: radial-gradient(circle, rgba(255,0,191,0.15) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .service-num {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900; font-size: 4rem; line-height: 1;
+      color: rgba(255,255,255,0.06); position: absolute;
+      top: 20px; right: 28px; letter-spacing: -0.02em;
+    }
+    .service-card h3 {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900; font-size: 1.35rem; text-transform: uppercase;
+      color: var(--cream); letter-spacing: 0.02em;
+      margin: 16px 0 12px; line-height: 1.1; position: relative; z-index: 1;
+    }
+    .service-card h3 .magenta { color: var(--magenta); }
+    .service-card p {
+      font-size: 0.9rem; color: rgba(241,236,225,0.65); line-height: 1.65;
+      position: relative; z-index: 1;
+    }
+
+    /* ===== ÁREAS ===== */
+    .areas-section { background: var(--cream); }
+    .areas-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      max-width: 1160px; margin: 48px auto 0;
+    }
+    .area-card {
+      background: var(--purple); border-radius: 16px; padding: 32px 28px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .area-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(55,40,107,0.3); }
+    .area-card h3 {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900; font-size: 1.1rem; text-transform: uppercase;
+      color: var(--cream); letter-spacing: 0.04em; margin: 14px 0 16px;
+    }
+    .area-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .area-card ul li {
+      font-size: 0.84rem; color: rgba(241,236,225,0.65); line-height: 1.5;
+      padding-left: 14px; position: relative;
+    }
+    .area-card ul li::before {
+      content: ''; position: absolute; left: 0; top: 8px;
+      width: 5px; height: 5px; background: var(--magenta); border-radius: 50%;
+    }
+
+    /* ===== CÓMO TRABAJAMOS ===== */
+    .como-section { background: var(--purple); padding: 96px 28px; }
+    .como-section .section-title { color: var(--cream); }
+    .como-section .section-title .highlight { color: var(--magenta); }
+    .como-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+      max-width: 1160px; margin: 48px auto 0;
+    }
+    .como-card {
+      background: var(--magenta);
+      border-radius: 16px; padding: 36px 32px;
+      position: relative;
+    }
+    .como-num {
+      width: 52px; height: 52px;
+      background: var(--purple); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Saira Condensed', sans-serif; font-weight: 900; font-size: 1.4rem;
+      color: #fff; margin-bottom: 20px;
+    }
+    .como-card p {
+      font-size: 0.97rem; color: rgba(255,255,255,0.9); line-height: 1.65;
+    }
+    .como-card p strong { color: #fff; font-weight: 800; }
+
+    /* ===== QUÉ NOS HACE DIFERENTES ===== */
+    .diff-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+      max-width: 1160px; margin: 48px auto 0;
+    }
+    .diff-card {
+      background: #fff; border-radius: 16px; padding: 36px 28px;
+      border: 1.5px solid rgba(55,40,107,0.1);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .diff-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(55,40,107,0.1); }
+    .diff-num {
+      width: 52px; height: 52px;
+      background: var(--magenta); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Saira Condensed', sans-serif; font-weight: 900; font-size: 1.4rem;
+      color: #fff; margin-bottom: 20px;
+    }
+    .diff-card p {
+      font-size: 0.92rem; color: rgba(26,20,38,0.7); line-height: 1.65;
+    }
+    .diff-card p strong { color: var(--purple); font-weight: 800; }
+
+    /* ===== CONSULTA CTA ===== */
+    .consulta-section { background: var(--cream); }
+    .consulta-inner {
+      max-width: 900px; margin: 0 auto;
+    }
+    .consulta-card {
+      background: var(--purple); border-radius: 24px;
+      padding: 64px 56px; position: relative; overflow: hidden;
+    }
+    .consulta-card::before {
+      content: '';
+      position: absolute; top: -60px; right: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(255,0,191,0.2) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .consulta-card::after {
+      content: '';
+      position: absolute; bottom: -40px; left: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(255,0,191,0.1) 0%, transparent 70%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .consulta-card h2 {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900; font-size: clamp(2.4rem, 5vw, 4rem);
+      text-transform: uppercase; color: var(--cream);
+      line-height: 0.92; margin-bottom: 20px; letter-spacing: -0.01em;
+      position: relative; z-index: 1;
+    }
+    .consulta-card h2 span { color: var(--magenta); }
+    .consulta-card .subtext {
+      font-size: 1rem; color: rgba(241,236,225,0.7); line-height: 1.65;
+      margin-bottom: 32px; max-width: 560px; position: relative; z-index: 1;
+    }
+    .consulta-list {
+      list-style: none; display: flex; flex-direction: column; gap: 12px;
+      margin-bottom: 40px; position: relative; z-index: 1;
+    }
+    .consulta-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.95rem; color: rgba(241,236,225,0.82); font-weight: 500;
+    }
+    .consulta-list li::before {
+      content: '→'; color: var(--magenta); font-weight: 800; flex-shrink: 0;
+    }
+    .booking-placeholder {
+      background: rgba(241,236,225,0.08);
+      border: 2px dashed rgba(255,0,191,0.35);
+      border-radius: 14px; padding: 36px;
+      text-align: center; position: relative; z-index: 1;
+      margin-bottom: 24px;
+    }
+    .booking-placeholder p {
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 700; font-size: 0.9rem;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: rgba(255,0,191,0.6); margin-bottom: 16px;
+    }
+    .booking-placeholder a {
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .consulta-tagline {
+      font-family: 'Saira', sans-serif; font-weight: 500; font-size: 0.85rem;
+      color: rgba(241,236,225,0.4); text-align: center; position: relative; z-index: 1;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark); padding: 64px 28px 32px;
+    }
+    .footer-inner { max-width: 1160px; margin: 0 auto; }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
+      padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .eb-logo {
+      font-family: 'Saira Condensed', sans-serif; font-weight: 900;
+      font-size: 2.4rem; text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--cream); line-height: 0.9; margin-bottom: 4px;
+    }
+    .footer-brand .lawyers-sub {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.22em; color: rgba(241,236,225,0.4);
+    }
+    .footer-brand p {
+      font-size: 0.88rem; color: rgba(241,236,225,0.45); line-height: 1.7;
+      margin-top: 16px; max-width: 280px;
+    }
+    .footer-brand .tagline-footer {
+      color: var(--magenta); font-style: italic; font-weight: 600;
+      font-size: 0.82rem; margin-top: 10px; display: block;
+    }
+    .footer-social { display: flex; gap: 10px; margin-top: 20px; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 9px;
+      background: rgba(255,255,255,0.06);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(241,236,225,0.55); font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .footer-social a:hover { background: var(--magenta); color: #fff; }
+    .footer-col h4 {
+      font-family: 'Saira Condensed', sans-serif; font-weight: 900;
+      font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--cream); margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li { font-size: 0.85rem; color: rgba(241,236,225,0.45); }
+    .footer-col ul li a {
+      transition: color 0.2s; text-decoration: none; color: inherit;
+    }
+    .footer-col ul li a:hover { color: var(--magenta); }
+    .footer-contact-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.85rem; color: rgba(241,236,225,0.5);
+      margin-bottom: 8px;
+    }
+    .footer-contact-item i { color: var(--magenta); width: 14px; text-align: center; }
+    .footer-bottom {
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .footer-bottom p { font-size: 0.78rem; color: rgba(241,236,225,0.25); }
+    .footer-bottom a { color: rgba(241,236,225,0.25); transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--magenta); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-card { max-width: 480px; }
+      .quienes-grid { grid-template-columns: 1fr; gap: 48px; }
+      .areas-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--cream); padding: 16px 20px; border-bottom: 1px solid rgba(55,40,107,0.1); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .nav-cta { display: none !important; }
+      .services-grid, .como-grid, .diff-grid { grid-template-columns: 1fr; }
+      .areas-grid { grid-template-columns: 1fr; }
+      .consulta-card { padding: 40px 28px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .fade-up { animation: fadeUp 0.55s ease both; }
+
+    /* ===== SECTION SPACING ===== */
+    .section-header { margin-bottom: 0; }
+    .section-center { text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      <div>
+        <span class="nav-logo-eb">EB</span>
+        <span class="nav-logo-lawyers">Lawyers</span>
+      </div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#quienes">Quiénes somos</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#areas">Especialización</a></li>
+      <li><a href="#consulta" class="nav-cta">Agenda tu consulta →</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Firma Legal para industrias creativas · Colombia</div>
+      <h1>
+        El derecho que<br/>
+        <span class="magenta">entiende</span><br/>
+        tu industria.
+      </h1>
+      <p>Si eres artista, creador, atleta o tienes un emprendimiento creativo, esta consulta es para ti. Menos formalismo. Más claridad. Más estructura.</p>
+      <div class="hero-btns">
+        <a href="#consulta" class="btn-magenta">
+          Agenda tu consulta <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="#quienes" class="btn-outline-cream">
+          Conocer más
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <h3>Nuestras industrias</h3>
+        <div class="hero-dot-live"><div class="dot-pulse"></div>Activo</div>
+      </div>
+      <div class="hero-areas">
+        <div class="hero-area-item">
+          <span class="hero-area-name">🎵 Música y entretenimiento</span>
+          <span class="hero-area-tag">Contratos · Regalías</span>
+        </div>
+        <div class="hero-area-item">
+          <span class="hero-area-name">🎨 Arte y creación digital</span>
+          <span class="hero-area-tag">Derechos de autor</span>
+        </div>
+        <div class="hero-area-item">
+          <span class="hero-area-name">⚡ Deporte de alto rendimiento</span>
+          <span class="hero-area-tag">Imagen · Sponsors</span>
+        </div>
+        <div class="hero-area-item">
+          <span class="hero-area-name">💻 Tecnología y startups</span>
+          <span class="hero-area-tag">P.I. · SaaS · Apps</span>
+        </div>
+      </div>
+      <div class="hero-card-bottom">
+        <p>Sesión de 30 min gratuita</p>
+        <span>→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item magenta">· El derecho tradicional no responde a las industrias creativas actuales ·</span>
+    <span class="marquee-item purple">Menos formalismo</span>
+    <span class="marquee-dot">✦</span>
+    <span class="marquee-item magenta">Más estructura</span>
+    <span class="marquee-dot">✦</span>
+    <span class="marquee-item purple">Más claridad</span>
+    <span class="marquee-dot">✦</span>
+    <span class="marquee-item magenta">Menos controversias</span>
+    <span class="marquee-dot">✦</span>
+    <span class="marquee-item purple">· El derecho tradicional no responde a las industrias creativas actuales ·</span>
+    <span class="marquee-item magenta">Menos formalismo</span>
+    <span class="marquee-dot">✦</span>
+    <span class="marquee-item purple">Más estructura</span>
+    <span class="marquee-dot">✦</span>
+    <span class="marquee-item magenta">Más claridad</span>
+    <span class="marquee-dot">✦</span>
+    <span class="marquee-item purple">Menos controversias</span>
+    <span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- ===== QUÉ SOMOS ===== -->
+<section class="section" id="quienes">
+  <div class="quienes-grid">
+    <div>
+      <span class="pill" style="margin-bottom:20px;display:inline-block;">Quiénes somos</span>
+      <h2 class="section-title">
+        QUÉ<br/>SOMOS
+        <span class="title-underline"></span>
+        <span class="title-underline-2"></span>
+      </h2>
+      <div class="quienes-text" style="margin-top:28px;">
+        <p><strong>EB Lawyers</strong> es una firma legal especializada en entretenimiento, tecnología, música, arte y deporte, construida sobre una premisa clara:</p>
+        <p><span class="magenta-text">El derecho tradicional no responde a las industrias creativas actuales.</span></p>
+        <p>Por eso operamos desde otro lugar. Vivimos el contexto real de nuestros clientes y entendemos las dinámicas de la industria desde adentro.</p>
+        <div class="quienes-claims">
+          <div class="claim-row">
+            <span class="less">menos</span>
+            <span class="claim-sep">✕</span>
+            <span class="more">formalismo</span>
+          </div>
+          <div class="claim-row">
+            <span class="more">más</span>
+            <span class="claim-sep">→</span>
+            <span class="less">estructura</span>
+          </div>
+          <div class="claim-row">
+            <span class="more">más</span>
+            <span class="claim-sep">→</span>
+            <span class="less">claridad</span>
+          </div>
+          <div class="claim-row">
+            <span class="less">menos</span>
+            <span class="claim-sep">✕</span>
+            <span class="more">controversias</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="quienes-visual">
+      <h3>
+        Propósito<br/>
+        <span>legal redefinido.</span>
+      </h3>
+      <div class="quienes-purpose-items">
+        <div class="purpose-item">
+          <div class="purpose-bullet"></div>
+          <span>Comprensible — el cliente siempre entiende lo que firma</span>
+        </div>
+        <div class="purpose-item">
+          <div class="purpose-bullet"></div>
+          <span>Estratégico — diseñado desde el inicio, no solo en crisis</span>
+        </div>
+        <div class="purpose-item">
+          <div class="purpose-bullet"></div>
+          <span>Accesible — sin lenguaje complicado ni formalidades innecesarias</span>
+        </div>
+        <div class="purpose-item">
+          <div class="purpose-bullet"></div>
+          <span>Alineado con la realidad del talento y el negocio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CON QUIÉN TRABAJAMOS ===== -->
+<section class="conquien-section">
+  <div class="conquien-title-wrap">
+    <span class="pill-outline" style="margin-bottom:16px;display:inline-block;">Con quién trabajamos</span>
+    <h2 class="section-title">
+      CON QUIÉN<br/>
+      <span class="highlight">TRABAJAMOS</span>
+    </h2>
+  </div>
+  <div class="clients-scroll">
+    <span class="client-tag featured">🎵 Artistas y músicos</span>
+    <span class="client-tag">🎬 Productores</span>
+    <span class="client-tag featured">📱 Creadores e influencers</span>
+    <span class="client-tag">🎮 Streamers</span>
+    <span class="client-tag">📸 Diseñadores y fotógrafos</span>
+    <span class="client-tag">✍️ Escritores</span>
+    <span class="client-tag featured">⚡ Atletas y talento deportivo</span>
+    <span class="client-tag">🏷️ Sellos independientes</span>
+    <span class="client-tag">🎧 Editoras y estudios</span>
+    <span class="client-tag featured">👔 Managers y agencias</span>
+    <span class="client-tag">🏟️ Federaciones deportivas</span>
+    <span class="client-tag">🚀 Startups creativas</span>
+    <span class="client-tag featured">🏢 Marcas y compañías</span>
+    <span class="client-tag">🤝 Productoras</span>
+  </div>
+</section>
+
+<!-- ===== SERVICIOS ===== -->
+<section class="section" id="servicios" style="background:var(--cream-d);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div style="max-width:560px;">
+      <span class="pill" style="margin-bottom:20px;display:inline-block;">Servicios</span>
+      <h2 class="section-title">
+        QUÉ<br/>HACEMOS
+        <span class="title-underline"></span>
+      </h2>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <span class="pill">Arquitectura</span>
+        <h3>Arquitectura legal<br/>de proyectos<br/><span class="magenta">y carrera</span></h3>
+        <p>Estructuración legal y comercial desde cero. Diseñamos la base legal de tu proyecto antes de que los problemas lleguen.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <span class="pill">Contratos</span>
+        <h3>Diseño contractual<br/><span class="magenta">y negociación</span></h3>
+        <p>Contratos que entiendes, que funcionan y que te protegen. Claros, funcionales y alineados con tus objetivos reales.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <span class="pill">Auditoría</span>
+        <h3>Auditoría legal<br/><span class="magenta">inteligente</span></h3>
+        <p>Revisamos lo que ya tienes: contratos, estructuras, riesgos. Evaluación de catálogos y estructuras legales existentes.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <span class="pill">Gestión</span>
+        <h3>Gestión estratégica<br/><span class="magenta">continua</span></h3>
+        <p>Soporte legal permanente para que tomes decisiones con claridad. No intervenimos solo cuando hay un problema.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== ÁREAS DE ESPECIALIZACIÓN ===== -->
+<section class="section areas-section" id="areas">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div style="max-width:600px;">
+      <span class="pill" style="margin-bottom:20px;display:inline-block;">Especialización</span>
+      <h2 class="section-title">
+        ÁREAS DE<br/>
+        <span class="highlight">ESPECIALIZACIÓN</span>
+        <span class="title-underline"></span>
+      </h2>
+    </div>
+    <div class="areas-grid">
+
+      <div class="area-card">
+        <span class="pill">🎵 Música</span>
+        <h3>Música</h3>
+        <ul>
+          <li>Estructuración legal de proyectos musicales</li>
+          <li>Contratos discográficos, publishing y distribución</li>
+          <li>Sincronización y derechos de autor</li>
+          <li>Regalías y cadenas de valor</li>
+        </ul>
+      </div>
+
+      <div class="area-card">
+        <span class="pill">🎬 Entretenimiento</span>
+        <h3>Entretenimiento</h3>
+        <ul>
+          <li>Contratos de talento (influencers, streamers, artistas)</li>
+          <li>Licenciamiento y explotación de contenido</li>
+          <li>Protección legal de marca personal</li>
+          <li>Acuerdos comerciales y colaboraciones</li>
+        </ul>
+      </div>
+
+      <div class="area-card">
+        <span class="pill">🎨 Arte</span>
+        <h3>Arte</h3>
+        <ul>
+          <li>Comercialización de obras</li>
+          <li>Derechos de autor y licencias</li>
+          <li>Contratos con galerías y plataformas</li>
+          <li>Protección de activos creativos</li>
+        </ul>
+      </div>
+
+      <div class="area-card">
+        <span class="pill">💻 Tecnología</span>
+        <h3>Tecnología</h3>
+        <ul>
+          <li>Contratos para plataformas digitales y apps</li>
+          <li>Protección de activos digitales y P.I.</li>
+          <li>Términos, condiciones y políticas de privacidad</li>
+          <li>Estructuración de SaaS y marketplaces</li>
+        </ul>
+      </div>
+
+      <div class="area-card">
+        <span class="pill">⚡ Deporte</span>
+        <h3>Deporte</h3>
+        <ul>
+          <li>Contratos deportivos</li>
+          <li>Derechos de imagen</li>
+          <li>Patrocinios y sponsorships</li>
+          <li>Estructuración de carrera y equipo</li>
+        </ul>
+      </div>
+
+      <div class="area-card">
+        <span class="pill">🚀 Emprendimiento</span>
+        <h3>Emprendimiento</h3>
+        <ul>
+          <li>Constitución y estructuración de compañías</li>
+          <li>Acuerdos entre socios y alianzas</li>
+          <li>Regulación de inversión y capital</li>
+          <li>Arquitectura legal para negocios escalables</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CÓMO TRABAJAMOS ===== -->
+<section class="como-section">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div style="max-width:560px;">
+      <span class="pill-cream" style="margin-bottom:20px;display:inline-block;">Metodología</span>
+      <h2 class="section-title" style="color:var(--cream);">
+        CÓMO<br/>
+        <span style="color:var(--magenta);">TRABAJAMOS</span>
+        <span class="title-underline"></span>
+      </h2>
+    </div>
+    <div class="como-grid">
+      <div class="como-card">
+        <div class="como-num">1</div>
+        <p>Transformamos documentos legales en <strong>herramientas claras y funcionales</strong>. Lo legal no tiene que ser complejo para ser sólido.</p>
+      </div>
+      <div class="como-card">
+        <div class="como-num">2</div>
+        <p><strong>No intervenimos solo cuando hay un problema.</strong> Diseñamos la estructura legal desde el inicio de cada proyecto y carrera.</p>
+      </div>
+      <div class="como-card">
+        <div class="como-num">3</div>
+        <p>Vivimos el <strong>contexto real de nuestros clientes</strong> y las dinámicas de la industria. Operamos desde adentro, no desde afuera.</p>
+      </div>
+      <div class="como-card">
+        <div class="como-num">4</div>
+        <p>Entendemos la <strong>pedagogía legal como principio</strong>. El cliente siempre tiene que entender lo que firma. Sin excepción.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUÉ NOS HACE DIFERENTES ===== -->
+<section class="section" style="background:var(--cream);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:0;">
+      <span class="pill" style="margin-bottom:16px;display:inline-block;">Diferenciadores</span>
+      <h2 class="section-title" style="display:block;text-align:center;">
+        QUÉ NOS HACE<br/>
+        <span class="highlight">DIFERENTES</span>
+        <span class="title-underline" style="margin:8px auto 0;"></span>
+      </h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <div class="diff-num">1</div>
+        <p>Integramos herramientas como el <strong>Legal Design</strong> y la <strong>Inteligencia Artificial</strong> para transformar la forma en que se desarrollan las relaciones legales.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">2</div>
+        <p>Operamos con una visión <strong>global e innovadora</strong>, entendiendo que los abogados actuales deben adaptarse a la nueva realidad <strong>transnacional y digital</strong>.</p>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">3</div>
+        <p>Diseñamos estructuras legales desde la <strong>experiencia personal</strong> como agentes al interior de las industrias creativas y del entretenimiento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONSULTA / CTA ===== -->
+<section class="section consulta-section" id="consulta">
+  <div class="consulta-inner">
+    <div class="consulta-card">
+      <h2>
+        Agenda tu<br/>
+        <span>consulta.</span>
+      </h2>
+      <p class="subtext">
+        Una sesión de 30 minutos. Sin rodeos. Sin lenguaje complicado. Solo claridad absoluta sobre tu situación legal.
+      </p>
+      <ul class="consulta-list">
+        <li>Evaluamos tu situación legal actual</li>
+        <li>Identificamos riesgos o vacíos en tus contratos o estructura</li>
+        <li>Te decimos exactamente cómo podemos ayudarte</li>
+      </ul>
+
+      <!-- Booking widget placeholder -->
+      <div class="booking-placeholder">
+        <p>↓ Widget de reserva (Calendly / Amelia) ↓</p>
+        <a href="https://calendly.com/eblawyers" target="_blank" class="btn-magenta" style="margin:0 auto;">
+          <i class="fas fa-calendar-check"></i> Reservar sesión de 30 min
+        </a>
+      </div>
+
+      <p class="consulta-tagline">
+        <i class="fas fa-lock" style="color:var(--magenta);margin-right:6px;"></i>
+        Sesión confidencial · Sin compromiso de contratación
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="eb-logo">EB</div>
+        <div class="lawyers-sub">Lawyers</div>
+        <p>Derecho para las industrias creativas. Música · Entretenimiento · Arte · Deporte · Tecnología · Emprendimiento.</p>
+        <span class="tagline-footer">"El derecho que entiende tu industria."</span>
+        <div class="footer-social">
+          <a href="https://instagram.com/eblawyers" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Especialización</h4>
+        <ul>
+          <li><a href="#areas">Música</a></li>
+          <li><a href="#areas">Entretenimiento</a></li>
+          <li><a href="#areas">Arte</a></li>
+          <li><a href="#areas">Deporte</a></li>
+          <li><a href="#areas">Tecnología</a></li>
+          <li><a href="#areas">Emprendimiento</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:info@eblawyers.com">info@eblawyers.com</a></div>
+        <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="tel:+573112188007">+57 (311) 218-8007</a></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><a href="tel:+573177774009">+57 (317) 777-4009</a></div>
+        <div class="footer-contact-item"><i class="fab fa-instagram"></i><a href="https://instagram.com/eblawyers" target="_blank">@eblawyers</a></div>
+        <div class="footer-contact-item"><i class="fas fa-globe"></i><a href="http://www.eblawyers.com" target="_blank">www.eblawyers.com</a></div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 EB Lawyers. Todos los derechos reservados.</p>
+      <p>
+        <a href="#">Política de privacidad</a> ·
+        <a href="#">Aviso legal</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Close menu on link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
