@@ -310,6 +310,11 @@
     .hero-card-bottom {
       background: var(--magenta); border-radius: 12px; padding: 16px 20px;
       display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-card-bottom:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(255,0,191,0.35);
     }
     .hero-card-bottom p {
       font-family: 'Saira Condensed', sans-serif; font-weight: 900;
@@ -688,6 +693,38 @@
     /* ===== SECTION SPACING ===== */
     .section-header { margin-bottom: 0; }
     .section-center { text-align: center; }
+
+    /* ===== FLOATING BOOKING BUTTON ===== */
+    .floating-cta {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--magenta);
+      color: #fff;
+      font-family: 'Saira Condensed', sans-serif;
+      font-weight: 900;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 16px 26px;
+      border-radius: 999px;
+      box-shadow: 0 8px 32px rgba(255,0,191,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeUp 0.55s ease 0.4s both;
+    }
+    .floating-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(255,0,191,0.55);
+    }
+    .floating-cta i { font-size: 1rem; }
+    @media (max-width: 640px) {
+      .floating-cta { bottom: 18px; right: 18px; padding: 16px; border-radius: 50%; }
+      .floating-cta span { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -758,10 +795,10 @@
           <span class="hero-area-tag">P.I. · SaaS · Apps</span>
         </div>
       </div>
-      <div class="hero-card-bottom">
+      <a href="https://calendar.app.google/EwaS9asoZViRt9d4A" target="_blank" rel="noopener" class="hero-card-bottom">
         <p>Sesión de 30 min gratuita</p>
         <span>→</span>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1086,10 +1123,9 @@
         <li>Te decimos exactamente cómo podemos ayudarte</li>
       </ul>
 
-      <!-- Booking widget placeholder -->
+      <!-- Booking CTA -->
       <div class="booking-placeholder">
-        <p>↓ Widget de reserva (Calendly / Amelia) ↓</p>
-        <a href="https://calendly.com/eblawyers" target="_blank" class="btn-magenta" style="margin:0 auto;">
+        <a href="https://calendar.app.google/EwaS9asoZViRt9d4A" target="_blank" rel="noopener" class="btn-magenta" style="margin:0 auto;">
           <i class="fas fa-calendar-check"></i> Reservar sesión de 30 min
         </a>
       </div>
@@ -1149,6 +1185,11 @@
     </div>
   </div>
 </footer>
+
+<!-- ===== FLOATING BOOKING BUTTON ===== -->
+<a href="https://calendar.app.google/EwaS9asoZViRt9d4A" target="_blank" rel="noopener" class="floating-cta" aria-label="Reservar sesión de 30 min">
+  <i class="fas fa-calendar-check"></i> <span>Reservar sesión de 30 min</span>
+</a>
 
 <script>
   // Navbar scroll
