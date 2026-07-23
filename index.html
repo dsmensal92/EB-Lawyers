@@ -725,6 +725,50 @@
       .floating-cta { bottom: 18px; right: 18px; padding: 16px; border-radius: 50%; }
       .floating-cta span { display: none; }
     }
+
+    /* ===== FOUNDERS ===== */
+    .founders-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+      max-width: 780px; margin: 48px auto 0;
+    }
+    .founder-card {
+      background: var(--purple); border-radius: 20px; padding: 32px 28px;
+      text-align: center; transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .founder-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(55,40,107,0.3); }
+    .founder-photo {
+      width: 168px; height: 168px; margin: 0 auto 22px;
+      border-radius: 50%; overflow: hidden; border: 3px solid var(--magenta);
+    }
+    .founder-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .founder-card h3 {
+      font-family: 'Saira Condensed', sans-serif; font-weight: 900; font-size: 1.2rem;
+      text-transform: uppercase; color: var(--cream); letter-spacing: 0.02em; margin-bottom: 14px;
+    }
+    .founder-credentials { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    @media (max-width: 768px) {
+      .founders-grid { grid-template-columns: 1fr; max-width: 380px; gap: 24px; }
+    }
+    /* ===== PODCAST ===== */
+    .podcast-grid {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center;
+    }
+    .podcast-copy { text-align: left; }
+    .podcast-video-frame {
+      position: relative; width: 100%; padding-top: 56.25%; /* 16:9 */
+      border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      background: #000;
+    }
+    .podcast-video-frame iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+    }
+    @media (max-width: 900px) {
+      .podcast-grid { grid-template-columns: 1fr; gap: 36px; }
+      .podcast-copy { text-align: center; }
+      .podcast-copy p { margin-left: auto; margin-right: auto; }
+      .podcast-copy .btn-magenta { margin: 0 auto; }
+    }
   </style>
 </head>
 <body>
@@ -739,9 +783,11 @@
       </div>
     </div>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#quienes">Quiénes somos</a></li>
-      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#quienes">Qué somos</a></li>
       <li><a href="#areas">Especialización</a></li>
+      <li><a href="#servicios">Qué hacemos</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#podcast">Podcast</a></li>
       <li><a href="#consulta" class="nav-cta">Agenda tu consulta →</a></li>
     </ul>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">
@@ -892,16 +938,17 @@
   </div>
 </section>
 
-<!-- ===== CON QUIÉN TRABAJAMOS ===== -->
-<section class="conquien-section">
-  <div class="conquien-title-wrap">
-    <span class="pill-outline" style="margin-bottom:16px;display:inline-block;">Con quién trabajamos</span>
-    <h2 class="section-title">
-      CON QUIÉN<br/>
-      <span class="highlight">TRABAJAMOS</span>
-    </h2>
-  </div>
-  <div class="clients-scroll">
+<!-- ===== CON QUIÉN TRABAJAMOS + ÁREAS DE ESPECIALIZACIÓN ===== -->
+<section class="section areas-section" id="areas" style="background:var(--cream-d);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div class="conquien-title-wrap" style="margin:0 0 32px;">
+      <span class="pill-outline" style="margin-bottom:16px;display:inline-block;">Con quién trabajamos</span>
+      <h2 class="section-title">
+        CON QUIÉN<br/>
+        <span class="highlight">TRABAJAMOS</span>
+      </h2>
+    </div>
+    <div class="clients-scroll" style="margin-bottom:72px;">
     <span class="client-tag featured">🎵 Artistas y músicos</span>
     <span class="client-tag">🎬 Productores</span>
     <span class="client-tag featured">📱 Creadores e influencers</span>
@@ -917,55 +964,6 @@
     <span class="client-tag featured">🏢 Marcas y compañías</span>
     <span class="client-tag">🤝 Productoras</span>
   </div>
-</section>
-
-<!-- ===== SERVICIOS ===== -->
-<section class="section" id="servicios" style="background:var(--cream-d);">
-  <div style="max-width:1160px;margin:0 auto;">
-    <div style="max-width:560px;">
-      <span class="pill" style="margin-bottom:20px;display:inline-block;">Servicios</span>
-      <h2 class="section-title">
-        QUÉ<br/>HACEMOS
-        <span class="title-underline"></span>
-      </h2>
-    </div>
-    <div class="services-grid">
-
-      <div class="service-card">
-        <span class="service-num">01</span>
-        <span class="pill">Arquitectura</span>
-        <h3>Arquitectura legal<br/>de proyectos<br/><span class="magenta">y carrera</span></h3>
-        <p>Estructuración legal y comercial desde cero. Diseñamos la base legal de tu proyecto antes de que los problemas lleguen.</p>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">02</span>
-        <span class="pill">Contratos</span>
-        <h3>Diseño contractual<br/><span class="magenta">y negociación</span></h3>
-        <p>Contratos que entiendes, que funcionan y que te protegen. Claros, funcionales y alineados con tus objetivos reales.</p>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">03</span>
-        <span class="pill">Auditoría</span>
-        <h3>Auditoría legal<br/><span class="magenta">inteligente</span></h3>
-        <p>Revisamos lo que ya tienes: contratos, estructuras, riesgos. Evaluación de catálogos y estructuras legales existentes.</p>
-      </div>
-
-      <div class="service-card">
-        <span class="service-num">04</span>
-        <span class="pill">Gestión</span>
-        <h3>Gestión estratégica<br/><span class="magenta">continua</span></h3>
-        <p>Soporte legal permanente para que tomes decisiones con claridad. No intervenimos solo cuando hay un problema.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ===== ÁREAS DE ESPECIALIZACIÓN ===== -->
-<section class="section areas-section" id="areas">
-  <div style="max-width:1160px;margin:0 auto;">
     <div style="max-width:600px;">
       <span class="pill" style="margin-bottom:20px;display:inline-block;">Especialización</span>
       <h2 class="section-title">
@@ -1046,11 +1044,11 @@
   </div>
 </section>
 
-<!-- ===== CÓMO TRABAJAMOS ===== -->
-<section class="como-section">
+<!-- ===== CÓMO TRABAJAMOS / QUÉ NOS HACE DIFERENTES ===== -->
+<section class="como-section" id="como">
   <div style="max-width:1160px;margin:0 auto;">
     <div style="max-width:560px;">
-      <span class="pill-cream" style="margin-bottom:20px;display:inline-block;">Metodología</span>
+      <span class="pill-cream" style="margin-bottom:20px;display:inline-block;">Qué nos hace diferentes</span>
       <h2 class="section-title" style="color:var(--cream);">
         CÓMO<br/>
         <span style="color:var(--magenta);">TRABAJAMOS</span>
@@ -1074,33 +1072,130 @@
         <div class="como-num">4</div>
         <p>Entendemos la <strong>pedagogía legal como principio</strong>. El cliente siempre tiene que entender lo que firma. Sin excepción.</p>
       </div>
+      <div class="como-card">
+        <div class="como-num">5</div>
+        <p>Integramos herramientas como el <strong>Legal Design</strong> y la <strong>Inteligencia Artificial</strong> para transformar la forma en que se desarrollan las relaciones legales.</p>
+      </div>
+      <div class="como-card">
+        <div class="como-num">6</div>
+        <p>Operamos con una visión <strong>global e innovadora</strong>, entendiendo que los abogados actuales deben adaptarse a la nueva realidad <strong>transnacional y digital</strong>.</p>
+      </div>
+      <div class="como-card">
+        <div class="como-num">7</div>
+        <p>Diseñamos estructuras legales desde la <strong>experiencia personal</strong> como agentes al interior de las industrias creativas y del entretenimiento.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== QUÉ NOS HACE DIFERENTES ===== -->
-<section class="section" style="background:var(--cream);">
+<!-- ===== SERVICIOS ===== -->
+<section class="section" id="servicios" style="background:var(--cream-d);">
+  <div style="max-width:1160px;margin:0 auto;">
+    <div style="max-width:560px;">
+      <span class="pill" style="margin-bottom:20px;display:inline-block;">Servicios</span>
+      <h2 class="section-title">
+        QUÉ<br/>HACEMOS
+        <span class="title-underline"></span>
+      </h2>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <span class="pill">Arquitectura</span>
+        <h3>Arquitectura legal<br/>de proyectos<br/><span class="magenta">y carrera</span></h3>
+        <p>Estructuración legal y comercial desde cero. Diseñamos la base legal de tu proyecto antes de que los problemas lleguen.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <span class="pill">Contratos</span>
+        <h3>Diseño contractual<br/><span class="magenta">y negociación</span></h3>
+        <p>Contratos que entiendes, que funcionan y que te protegen. Claros, funcionales y alineados con tus objetivos reales.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <span class="pill">Auditoría</span>
+        <h3>Auditoría legal<br/><span class="magenta">inteligente</span></h3>
+        <p>Revisamos lo que ya tienes: contratos, estructuras, riesgos. Evaluación de catálogos y estructuras legales existentes.</p>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <span class="pill">Gestión</span>
+        <h3>Gestión estratégica<br/><span class="magenta">continua</span></h3>
+        <p>Soporte legal permanente para que tomes decisiones con claridad. No intervenimos solo cuando hay un problema.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUIÉNES SOMOS / FOUNDERS ===== -->
+<section class="section" id="equipo" style="background:var(--cream);">
   <div style="max-width:1160px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:0;">
-      <span class="pill" style="margin-bottom:16px;display:inline-block;">Diferenciadores</span>
+      <span class="pill" style="margin-bottom:16px;display:inline-block;">Founders</span>
       <h2 class="section-title" style="display:block;text-align:center;">
-        QUÉ NOS HACE<br/>
-        <span class="highlight">DIFERENTES</span>
+        QUIÉNES<br/>
+        <span class="highlight">SOMOS</span>
         <span class="title-underline" style="margin:8px auto 0;"></span>
       </h2>
     </div>
-    <div class="diff-grid">
-      <div class="diff-card">
-        <div class="diff-num">1</div>
-        <p>Integramos herramientas como el <strong>Legal Design</strong> y la <strong>Inteligencia Artificial</strong> para transformar la forma en que se desarrollan las relaciones legales.</p>
+    <div class="founders-grid">
+      <div class="founder-card">
+        <div class="founder-photo">
+          <img src="assets/daniel-yate.jpg" alt="Daniel Yate Durán" loading="lazy"/>
+        </div>
+        <h3>Daniel Yate Durán</h3>
+        <ul class="founder-credentials">
+          <li>Abogado — U. Externado de Colombia</li>
+          <li>Music Industry Manager — Middlesex U. (Londres)</li>
+        </ul>
       </div>
-      <div class="diff-card">
-        <div class="diff-num">2</div>
-        <p>Operamos con una visión <strong>global e innovadora</strong>, entendiendo que los abogados actuales deben adaptarse a la nueva realidad <strong>transnacional y digital</strong>.</p>
+      <div class="founder-card">
+        <div class="founder-photo">
+          <img src="assets/daniel-hernandez.jpg" alt="Daniel Hernández Cruz" loading="lazy"/>
+        </div>
+        <h3>Daniel Hernández Cruz</h3>
+        <ul class="founder-credentials">
+          <li>Abogado — U. de la Sabana</li>
+          <li>Magíster en Derecho Deportivo — UE Real Madrid</li>
+        </ul>
       </div>
-      <div class="diff-card">
-        <div class="diff-num">3</div>
-        <p>Diseñamos estructuras legales desde la <strong>experiencia personal</strong> como agentes al interior de las industrias creativas y del entretenimiento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PODCAST ===== -->
+<section class="section podcast-section" id="podcast" style="background:var(--purple-d);">
+  <div class="podcast-grid">
+    <div class="podcast-copy">
+      <span class="pill-cream" style="margin-bottom:20px;display:inline-block;">Podcast</span>
+      <h2 class="section-title" style="color:var(--cream);">
+        ESCUCHA NUESTRO<br/>
+        <span style="color:var(--magenta);">PODCAST</span>
+        <span class="title-underline"></span>
+      </h2>
+      <p style="max-width:440px;margin:24px 0 32px;color:rgba(241,236,225,.75);font-size:1rem;line-height:1.65;">
+        "Letra Fina" — conversaciones sobre derecho, industrias creativas y todo lo que hay detrás del contrato.
+      </p>
+      <a href="https://youtube.com/@letrafinapodcast?si=Fa-KOk5cV3J2UvNY" target="_blank" rel="noopener" class="btn-magenta">
+        <i class="fab fa-youtube"></i> Ver canal completo
+      </a>
+    </div>
+    <div class="podcast-video">
+      <div class="podcast-video-frame">
+        <iframe
+          src="https://www.youtube.com/embed/videoseries?list=UUThAgA1L3Vk5kBu0csPjxQQ"
+          title="Letra Fina Podcast — último episodio"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
       </div>
     </div>
   </div>
@@ -1168,11 +1263,11 @@
 
       <div class="footer-col">
         <h4>Contacto</h4>
-        <div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:info@eblawyers.com">info@eblawyers.com</a></div>
-        <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="tel:+573112188007">+57 (311) 218-8007</a></div>
-        <div class="footer-contact-item"><i class="fas fa-phone"></i><a href="tel:+573177774009">+57 (317) 777-4009</a></div>
+        <div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:danielyatemb@gmail.com">danielyatemb@gmail.com</a></div>
+        <div class="footer-contact-item"><i class="fab fa-whatsapp"></i><a href="https://wa.me/573112188007" target="_blank">+57 311 218 8007</a></div>
+        <div class="footer-contact-item"><i class="fas fa-phone"></i><a href="tel:+573112188007">+57 311 218 8007</a></div>
         <div class="footer-contact-item"><i class="fab fa-instagram"></i><a href="https://instagram.com/eblawyers" target="_blank">@eblawyers</a></div>
-        <div class="footer-contact-item"><i class="fas fa-globe"></i><a href="http://www.eblawyers.com" target="_blank">www.eblawyers.com</a></div>
+        <div class="footer-contact-item"><i class="fas fa-globe"></i><a href="http://www.eblaws.com" target="_blank">www.eblaws.com</a></div>
       </div>
     </div>
 
