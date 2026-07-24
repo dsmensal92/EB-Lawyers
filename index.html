@@ -4,6 +4,12 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>EB Lawyers – El derecho que entiende tu industria</title>
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png"/>
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&family=Saira+Condensed:wght@700;800;900&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -131,26 +137,11 @@
       height: 68px;
     }
     .nav-logo {
-      font-family: 'Saira Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--purple);
-      display: flex; align-items: center; gap: 8px;
+      display: flex; align-items: center;
       cursor: pointer;
     }
-    .nav-logo-eb {
-      font-size: 2rem; line-height: 1;
-      color: var(--purple);
-    }
-    .nav-logo-lawyers {
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.2em;
-      color: var(--purple);
-      opacity: 0.7;
-      display: block;
-      margin-top: -2px;
+    .nav-logo-img {
+      height: 38px; width: auto; display: block;
     }
     .nav-links {
       display: flex; align-items: center; gap: 4px; list-style: none;
@@ -614,14 +605,8 @@
       display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
       padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .footer-brand .eb-logo {
-      font-family: 'Saira Condensed', sans-serif; font-weight: 900;
-      font-size: 2.4rem; text-transform: uppercase; letter-spacing: 0.04em;
-      color: var(--cream); line-height: 0.9; margin-bottom: 4px;
-    }
-    .footer-brand .lawyers-sub {
-      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.22em; color: rgba(241,236,225,0.4);
+    .footer-logo-img {
+      height: 46px; width: auto; display: block; margin-bottom: 16px;
     }
     .footer-brand p {
       font-size: 0.88rem; color: rgba(241,236,225,0.45); line-height: 1.7;
@@ -777,10 +762,7 @@
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
     <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-      <div>
-        <span class="nav-logo-eb">EB</span>
-        <span class="nav-logo-lawyers">Lawyers</span>
-      </div>
+      <img src="assets/logo-blanco-web.png" alt="EB Lawyers" class="nav-logo-img"/>
     </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#quienes">Qué somos</a></li>
@@ -801,7 +783,7 @@
   <div class="hero-lines"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow">Firma Legal para industrias creativas</div>
+      <div class="hero-eyebrow">Firma Legal para industrias creativas · Colombia</div>
       <h1>
         El derecho que<br/>
         <span class="magenta">entiende</span><br/>
@@ -1238,8 +1220,7 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="eb-logo">EB</div>
-        <div class="lawyers-sub">Lawyers</div>
+        <img src="assets/logo-morado-web.png" alt="EB Lawyers" class="footer-logo-img"/>
         <p>Derecho para las industrias creativas. Música · Entretenimiento · Arte · Deporte · Tecnología · Emprendimiento.</p>
         <span class="tagline-footer">"El derecho que entiende tu industria."</span>
         <div class="footer-social">
