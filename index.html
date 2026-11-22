@@ -344,21 +344,24 @@
     /* ===== HERO ===== */
     .hero {
       min-height: 100vh;
-      background: var(--purple);
+      /* Neon magenta shadow gradient: dark base, glow from bottom-left, diagonal streak to top-right */
+      background:
+        radial-gradient(ellipse 48vw 52vw at -1% 103%, #ff38d9 0%, #fc30d3 10%, rgba(226,38,184,.95) 22%, rgba(182,14,139,.9) 38%, rgba(126,12,97,.82) 56%, rgba(70,10,64,.72) 78%, rgba(40,8,45,0) 100%),
+        radial-gradient(ellipse 50vw 20vw at 48% 108%, rgba(110,8,88,.55) 0%, rgba(40,8,45,0) 100%),
+        linear-gradient(160deg, #241335 0%, #170a24 40%, #07010e 100%);
       display: flex; align-items: center;
       padding: 110px 28px 80px;
       position: relative; overflow: hidden;
     }
+    /* Diagonal neon streak toward the top-right */
     .hero::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 80% 20%, rgba(255,0,191,0.12) 0%, transparent 60%),
-                  radial-gradient(ellipse at 10% 80%, rgba(255,0,191,0.07) 0%, transparent 50%);
-      pointer-events: none;
+      content: ''; position: absolute; top: -2.5vw; right: -10vw; width: 80vw; height: 12.5vw;
+      background: linear-gradient(90deg, rgba(96,8,82,0) 0%, rgba(150,12,115,.55) 30%, rgba(206,20,142,.95) 62%, rgba(255,42,200,.85) 86%, rgba(96,8,82,.45) 100%);
+      transform: rotate(22deg); filter: blur(4.5vw); pointer-events: none; z-index: 0;
     }
     /* Diagonal accent lines */
     .hero-lines {
-      position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
+      position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; display: none;
     }
     .hero-lines::before {
       content: '';
@@ -768,7 +771,7 @@
 
     /* ===== FOOTER ===== */
     footer {
-      background: var(--dark); padding: 64px 28px 104px;
+      background: var(--dark); padding: 64px 28px 168px;
     }
     .footer-inner { max-width: 1160px; margin: 0 auto; }
     .footer-top {
@@ -940,6 +943,22 @@
     .footer-link-btn:hover { color:var(--magenta); }
     .footer-bottom a { color:rgba(241,236,225,0.55); }
     .footer-link-btn { color:rgba(241,236,225,0.55); }
+
+    /* ===== FLOATING WHATSAPP BUTTON (stacked above the booking CTA) ===== */
+    .floating-wa {
+      position: fixed; right: 24px; bottom: 86px; z-index: 999;
+      width: 56px; height: 56px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: #128C7E; color: #fff; font-size: 1.7rem; text-decoration: none;
+      box-shadow: 0 8px 28px rgba(18,140,126,.5);
+      transition: transform .2s, box-shadow .2s, background .2s;
+      animation: fadeUp 0.55s ease 0.5s both;
+    }
+    .floating-wa:hover { background: #0e6f64; transform: translateY(-3px); box-shadow: 0 14px 36px rgba(18,140,126,.6); }
+    .floating-wa:focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: 0 0 0 6px #37286b; }
+    .floating-wa:active { transform: translateY(0); }
+    @media (max-width: 640px) { .floating-wa { right: 18px; bottom: 78px; width: 48px; height: 48px; font-size: 1.5rem; } }
+    @media (prefers-reduced-motion: reduce) { .floating-wa, .floating-cta { animation: none; transition: none; } }
   </style>
 </head>
 <body>
@@ -1468,6 +1487,11 @@
 </footer>
 
 <!-- ===== FLOATING BOOKING BUTTON ===== -->
+<!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+<a href="https://wa.me/573112188007?text=Hola%20EB%20Lawyers%2C%20quiero%20agendar%20una%20sesi%C3%B3n%20de%20orientaci%C3%B3n." target="_blank" rel="noopener" class="floating-wa" aria-label="Escríbenos por WhatsApp" title="Escríbenos por WhatsApp">
+  <i class="fab fa-whatsapp" aria-hidden="true"></i>
+</a>
+
 <a href="https://calendar.app.google/EwaS9asoZViRt9d4A" target="_blank" rel="noopener" class="floating-cta" aria-label="Reservar sesión de 30 min">
   <i class="fas fa-calendar-check"></i> <span>Reservar sesión de 30 min</span>
 </a>
